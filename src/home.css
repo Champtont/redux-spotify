@@ -30,7 +30,7 @@ body {
   align-items: flex-start;
   background-color: rgba(0, 0, 0, 0.929);
   z-index: 1;
-  max-height: 89.5vh;
+  max-height: 100vh;
 }
 
 .navbar.fixed-left .navbar-collapse .navbar-nav a {
