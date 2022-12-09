@@ -1,15 +1,22 @@
+import { Col, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import { BsVolumeUpFill } from "react-icons/bs";
+import Nextbtn from "../playerbuttons/Next.png";
+import Pausebtn from "../playerbuttons/Pause.png";
+import Playbtn from "../playerbuttons/Play.png";
+import Prevbtn from "../playerbuttons/Previous.png";
+import Repeatbtn from "../playerbuttons/Repeat.png";
+import Shufflebtn from "../playerbuttons/Shuffle.png";
 
 const MyFooter = () => {
   return (
     <footer id="bottom" className="m-0 justify-content-between">
-      <div className="row flex-nowrap  playBar py-3">
-        <div className="col-3">
-          <div className="playerArtistInfo d-flex" style="height:50px;">
+      <Row>
+        <Col lg={3}>
+          <div className="playerArtistInfo d-flex" style={{ height: "50px" }}>
             <img
               src="https://upload.wikimedia.org/wikipedia/en/4/4d/Another_one_bites_the_dust.jpg"
               id="smalbumpic"
-              alt="some pic"
             />
             <div id="artistfooter" className="d-flex flex-column pl-2 ">
               <h6 className="music-player-info">Another One Bites The Dust</h6>
@@ -30,51 +37,36 @@ const MyFooter = () => {
             <p className="ml-1"></p>
             <audio id="audio"></audio>
           </div>
-        </div>
-        <div className="col-6">
+        </Col>
+        <Col lg={6}>
           <div className="playerControls w-50 d-flex justify-content-between">
             <a href="#">
-              <img src="playerbuttons/Shuffle.png" alt="shuffle" />
+              <img src={Shufflebtn} alt="shuffle" />
             </a>
             <a href="#">
-              <img src="playerbuttons/Previous.png" alt="previous" />
+              <img src={Prevbtn} alt="previous" />
             </a>
             <a id="miniplay">
-              <img src="playerbuttons/Play.png" alt="play" />
+              <img src={Playbtn} alt="play" />
             </a>
             <a id="minipause">
-              <img src="playerbuttons/Pause.png" alt="" />
+              <img src={Pausebtn} alt="" />
             </a>
             <a href="#">
-              <img src="playerbuttons/Next.png" alt="next" />
+              <img src={Nextbtn} alt="next" />
             </a>
             <a href="#">
-              <img src="playerbuttons/Repeat.png" alt="repeat" />
+              <img src={Repeatbtn} alt="repeat" />
             </a>
           </div>
-          <div className="progressContainer d-flex align-items-center">
-            <span className="currentTime">00:00</span>
-            <div className="progress w-100">
-              <div
-                className="progress-bar"
-                role="progressbar"
-                aria-valuenow="0"
-                aria-valuemin="0"
-                aria-valuemax="20"
-              >
-                <audio></audio>
-              </div>
-            </div>
-            <span className="duration">00:00</span>
-          </div>
-        </div>
-        <div className="col-auto ml-5 ">
+        </Col>
+        <Col lg={3}>
           <div className="playerVolume">
-            <i className="fa fa-volume-up"></i>
-            <input type="range" value="100" />
+            <BsVolumeUpFill />
+            <input type="range" />
           </div>
-        </div>
-      </div>
+        </Col>
+      </Row>
     </footer>
   );
 };
