@@ -55,7 +55,6 @@ const MyNav = () => {
                 </li>
                 <li>
                   <a className="nav-item nav-link" href="#">
-                    <i className=""></i>
                     <img className="navbar-icons" src={LibraryIcon} /> Your
                     Library
                   </a>
@@ -81,7 +80,7 @@ const MyNav = () => {
                   </Link>
                 </li>
                 <li>
-                  <Form onSubmit={handleSubmit}>
+                  <Form onSubmit={handleSubmit} className="my-5">
                     <Form.Control
                       type="search"
                       value={value}
