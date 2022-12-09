@@ -2,13 +2,14 @@ import {
   GET_ARTISTS,
   GET_CMUSIC_ON_LOAD,
   GET_GYM_MUSIC_ON_lOAD,
+  SET_PLAYING,
 } from "../actions";
 
 const initialState = {
   artists: [],
-  cMusicOnLoad: [],
   gymMusicOnLoad: [],
-  searchedMusic: [],
+  favoriteMusic: [],
+  setPlaying: [],
 };
 
 const artistReducer = (state = initialState, action) => {
@@ -18,10 +19,10 @@ const artistReducer = (state = initialState, action) => {
         ...state,
         artists: [action.payload],
       };
-    case GET_CMUSIC_ON_LOAD:
+    case SET_PLAYING:
       return {
         ...state,
-        cMusicOnLoad: [...state.cMusicOnLoad, action.payload],
+        setPlaying: [action.payload],
       };
     case GET_GYM_MUSIC_ON_lOAD:
       return {

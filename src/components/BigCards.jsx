@@ -8,6 +8,7 @@ const BigCards = (props) => {
           className="img-fluid"
           src={props.object.album.cover_xl}
           alt="img placeholder"
+          onClick={() => {}}
         />
       </Link>
 
