@@ -16,7 +16,7 @@ const artistReducer = (state = initialState, action) => {
     case GET_ARTISTS:
       return {
         ...state,
-        artists: [...state.artists, action.payload],
+        artists: [action.payload],
       };
     case GET_CMUSIC_ON_LOAD:
       return {

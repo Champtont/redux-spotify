@@ -3,10 +3,10 @@ const SmallCards = (props) => {
     <div className="col-5  col-lg-2  goodMorningDivs m-2 mb-5">
       <div className="img-div">
         <img
-          className="  "
+          className=" img-fluid "
           src={props.song.album.cover_small}
           alt="img placeholder"
-          height="60px"
+          style={{ height: "60px" }}
         />
       </div>
 

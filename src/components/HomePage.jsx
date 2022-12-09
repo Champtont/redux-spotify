@@ -3,13 +3,10 @@ import MyNav from "./MyNav";
 import FloatingUserBar from "./FloatingUserBar";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { getGymMusicAction } from "../redux/actions";
-import { GET_CMUSIC_ON_LOAD } from "../redux/actions";
 import SmallCards from "./SmallCards";
 import BigCards from "./BigCards";
 
 const HomePage = () => {
-  const gymSongs = useSelector((state) => state.music.gymMusicOnLoad);
   const searchedMusic = useSelector((state) => state.music.artists);
 
   const [christmas, setChristmas] = useState([]);
@@ -63,21 +60,17 @@ const HomePage = () => {
               ))}
             </div>
           </div>
-          <div className="row ">
+          <div className="row " style={{ justifyContent: "end" }}>
             <div className="col-10 pl-5 ">
-              <div
-                id="searchResults"
-                className="pl-5"
-                style={{ display: "none" }}
-              >
+              <div id="searchResults" className="pl-5">
                 <h2 className="searchResult">Search Results</h2>
-                <div className="row row-cols-1 row-cols-sm-1 row-cols-lg-1 row-cols-xl-1 imgLinks py-3">
-                  {searchedMusic !== undefined &&
-                    searchedMusic.map((result) => (
-                      <BigCards
-                        result={result}
-                        key={result.music.artists.artist.id}
-                      />
+                <div
+                  className="row imgLinks py-3"
+                  style={{ justifyContent: "center" }}
+                >
+                  {searchedMusic.length > 0 &&
+                    searchedMusic[0].map((object) => (
+                      <BigCards key={object.id} object={object} />
                     ))}
                 </div>
               </div>
