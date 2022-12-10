@@ -7,16 +7,14 @@ const BigCards = (props) => {
 
   return (
     <div className="col-12 col-md-3 col-lg-2 card  m-2 text-center dark-cards SongCards ">
-      <Link href={props.object.artist.id}>
-        <img
-          className="img-fluid"
-          src={props.object.album.cover_xl}
-          alt="img placeholder"
-          onClick={() => {
-            dispatch({ type: SET_PLAYING, payload: props.object });
-          }}
-        />
-      </Link>
+      <img
+        className="img-fluid"
+        src={props.object.album.cover_xl}
+        alt="img placeholder"
+        onClick={() => {
+          dispatch({ type: SET_PLAYING, payload: props.object });
+        }}
+      />
 
       <img
         className="playButtonCard"
@@ -25,9 +23,13 @@ const BigCards = (props) => {
       />
 
       <p>
-        <Link href={props.object.album.id}>{props.object.album.title}</Link>
+        <Link to={`/album/${props.object.album.id}`}>
+          {props.object.album.title}
+        </Link>
         <br />
-        <Link href={props.object.artist.id}>{props.object.artist.name}</Link>
+        <Link to={`/artist/${props.object.artist.id}`}>
+          {props.object.artist.name}
+        </Link>
       </p>
     </div>
   );

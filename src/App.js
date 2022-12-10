@@ -7,6 +7,8 @@ import "./artist.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MyFooter from "./components/MyFooter";
 import HomePage from "./components/HomePage";
+import AlbumPage from "./components/AlbumPage";
+import ArtistPage from "./components/ArtistPage";
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
       <div className="App">
         <Routes>
           <Route path={"/"} element={<HomePage />} />
+          <Route path={"/album/:albumID"} element={<AlbumPage />} />
+          <Route path={"/artist/:artistID"} element={<ArtistPage />} />
         </Routes>
         <MyFooter />
       </div>

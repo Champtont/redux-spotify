@@ -1,7 +1,7 @@
 import {
   GET_ARTISTS,
-  GET_CMUSIC_ON_LOAD,
   GET_GYM_MUSIC_ON_lOAD,
+  SET_FAV,
   SET_PLAYING,
 } from "../actions";
 
@@ -23,6 +23,11 @@ const artistReducer = (state = initialState, action) => {
       return {
         ...state,
         setPlaying: [action.payload],
+      };
+    case SET_FAV:
+      return {
+        ...state,
+        favoriteMusic: [...state.favoriteMusic, action.payload],
       };
     case GET_GYM_MUSIC_ON_lOAD:
       return {

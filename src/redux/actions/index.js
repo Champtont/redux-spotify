@@ -1,8 +1,9 @@
 export const GET_ARTISTS = "GET_ARTISTS";
-export const GET_CMUSIC_ON_LOAD = "GET_MUSIC_ON_LOAD";
+export const GET_CMUSIC_ON_LOAD = "GET_CMUSIC_ON_LOAD";
 export const GET_GYM_MUSIC_ON_lOAD = "GET_GYM_MUSIC_ON_LOAD";
 export const GET_USER = "GET_USER";
 export const SET_PLAYING = "SET_PLAYING";
+export const SET_FAV = "SET_FAV";
 
 export const getArtistAction = (query) => {
   const baseEndpoint = `https://striveschool-api.herokuapp.com/api/deezer/search?q=`;
