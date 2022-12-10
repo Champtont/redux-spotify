@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { SET_PLAYING } from "../redux/actions";
 
 const BigCards = (props) => {
+  const dispatch = useDispatch();
+
   return (
     <div className="col-12 col-md-3 col-lg-2 card  m-2 text-center dark-cards SongCards ">
       <Link href={props.object.artist.id}>
@@ -8,7 +12,9 @@ const BigCards = (props) => {
           className="img-fluid"
           src={props.object.album.cover_xl}
           alt="img placeholder"
-          onClick={() => {}}
+          onClick={() => {
+            dispatch({ type: SET_PLAYING, payload: props.object });
+          }}
         />
       </Link>
 

@@ -11,8 +11,6 @@ const HomePage = () => {
 
   const [christmas, setChristmas] = useState([]);
 
-  const dispatch = useDispatch();
-
   useEffect(() => {
     getChristmasMusic();
     console.log("working");
