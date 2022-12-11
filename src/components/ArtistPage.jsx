@@ -26,60 +26,64 @@ const ArtistPage = () => {
         <MyNav />
         <div>
           <FloatingUserBar />
-          <div
-            id="mainRight"
-            className="col-sm-12 p-0 fluid"
-            style={{
-              marginLeft: "15.5%",
-              backgroundImage: `url(${artistInfo[0].picture_xl})`,
-              backgroundPositionY: "center",
-              height: "400px",
-            }}
-          >
-            <div id="mainPanel" className="jumbotron jumbotron-fluid p-0 m-0">
-              <div className="container ml-0 p-0">
-                {
-                  <div id="artistsinfo" className="px-4">
-                    <div
-                      className="d-flex align-items-center"
-                      style={{ gap: "15px" }}
-                    >
+          {artistInfo.length === 0 && <div></div>}
+          {artistInfo.length > 0 && (
+            <div
+              id="mainRight"
+              className="col-sm-12 p-0 fluid"
+              style={{
+                marginLeft: "15.5%",
+                backgroundImage: `url(${artistInfo[0].picture_xl})`,
+                backgroundPositionY: "center",
+                height: "400px",
+              }}
+            >
+              <div id="mainPanel" className="jumbotron jumbotron-fluid p-0 m-0">
+                <div className="container ml-0 p-0">
+                  {
+                    <div id="artistsinfo" className="px-4">
                       <div
-                        id="check-mark"
-                        style={{
-                          width: "10px",
-                          height: "10px",
-                          backgroundColor: "white",
-                          position: "relative",
-                        }}
+                        className="d-flex align-items-center"
+                        style={{ gap: "15px" }}
                       >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          fill="blue"
-                          className="bi bi-patch-check-fill"
-                          viewBox="0 0 16 16"
+                        <div
+                          id="check-mark"
                           style={{
-                            position: "absolute",
-                            top: "-6",
-                            left: "-6",
+                            width: "10px",
+                            height: "10px",
+                            backgroundColor: "white",
+                            position: "relative",
                           }}
                         >
-                          <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z" />
-                        </svg>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            fill="blue"
+                            className="bi bi-patch-check-fill"
+                            viewBox="0 0 16 16"
+                            style={{
+                              position: "absolute",
+                              top: "-6",
+                              left: "-6",
+                            }}
+                          >
+                            <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z" />
+                          </svg>
+                        </div>
+                        <p className="m-0">Verified Artist</p>
                       </div>
-                      <p className="m-0">Verified Artist</p>
+                      <h1 className="text-start">{artistInfo[0].name}</h1>
+                      <p className="lead m-0 text-start">
+                        {artistInfo[0].nb_fan.toLocaleString()} monthly
+                        listeners
+                      </p>
                     </div>
-                    <h1 className="text-start">{artistInfo[0].name}</h1>
-                    <p className="lead m-0 text-start">
-                      {artistInfo[0].nb_fan.toLocaleString()} monthly listeners
-                    </p>
-                  </div>
-                }
+                  }
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </Row>
       <Row>
@@ -150,6 +154,7 @@ const ArtistPage = () => {
                   id="popular"
                   style={{ marginLeft: "25%" }}
                 >
+                  {topSongs.length === 0 && <div></div>}
                   {topSongs.length > 0 &&
                     topSongs.map((song) => (
                       <SingleSong key={song.id} song={song} />

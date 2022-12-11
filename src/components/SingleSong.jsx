@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { REMOVE_FAV, SET_FAV } from "../redux/actions";
 
 const SingleSong = (props) => {
-  let favorites = useSelector((state) => state.music.favoriteMusic);
+  const favorites = useSelector((state) => state.music.favoriteMusic);
 
   const dispatch = useDispatch();
 

@@ -7,9 +7,11 @@ import Playbtn from "../playerbuttons/Play.png";
 import Prevbtn from "../playerbuttons/Previous.png";
 import Repeatbtn from "../playerbuttons/Repeat.png";
 import Shufflebtn from "../playerbuttons/Shuffle.png";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
 const MyFooter = () => {
   const currentSelection = useSelector((state) => state.music.setPlaying);
+  const favorites = useSelector((state) => state.music.favoriteMusic);
 
   return (
     <footer
