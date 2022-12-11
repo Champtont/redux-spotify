@@ -5,6 +5,7 @@ import FloatingUserBar from "./FloatingUserBar";
 import MyNav from "./MyNav";
 
 const AlbumPage = () => {
+  const params = useParams();
   return (
     <Row>
       <MyNav />

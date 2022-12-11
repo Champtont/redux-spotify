@@ -9,6 +9,7 @@ import MyFooter from "./components/MyFooter";
 import HomePage from "./components/HomePage";
 import AlbumPage from "./components/AlbumPage";
 import ArtistPage from "./components/ArtistPage";
+import LikedPage from "./components/LikedPage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path={"/"} element={<HomePage />} />
           <Route path={"/album/:albumID"} element={<AlbumPage />} />
           <Route path={"/artist/:artistID"} element={<ArtistPage />} />
+          <Route path={"/Likedsongs"} element={<LikedPage />} />
         </Routes>
         <MyFooter />
       </div>

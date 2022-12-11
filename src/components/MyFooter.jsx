@@ -12,7 +12,11 @@ const MyFooter = () => {
   const currentSelection = useSelector((state) => state.music.setPlaying);
 
   return (
-    <footer id="bottom" className="m-0 justify-content-between">
+    <footer
+      id="bottom"
+      className="m-0 justify-content-between"
+      style={{ zIndex: "3" }}
+    >
       <Row>
         <Col lg={3}>
           <div className="playerArtistInfo d-flex" style={{ height: "50px" }}>
@@ -53,7 +57,9 @@ const MyFooter = () => {
                   <h6 className="music-player-info">
                     {currentSelection[0].album.title}
                   </h6>
-                  <p className="artist-small-player">Queen</p>
+                  <p className="artist-small-player">
+                    {currentSelection[0].artist.name}
+                  </p>
                 </div>
                 <p>
                   <svg

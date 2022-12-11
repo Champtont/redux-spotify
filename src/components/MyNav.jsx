@@ -30,9 +30,9 @@ const MyNav = () => {
         id="sidebar"
       >
         <div className="nav-container">
-          <a className="navbar-brand" href="/home.html">
+          <Link className="navbar-brand" to={"/"}>
             <img src={SpotifyLogo} alt="Spotify_Logo" width="131" height="40" />
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -48,10 +48,10 @@ const MyNav = () => {
             <div className="navbar-nav">
               <ul className="ul-font">
                 <li>
-                  <a className="nav-item nav-link" href="/home.html">
+                  <Link className="nav-item nav-link" to={"/"}>
                     <img className="navbar-icons" src={HomeIcon} alt="icon" />{" "}
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <a className="nav-item nav-link" href="#">
@@ -70,7 +70,7 @@ const MyNav = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link className="nav-item nav-link" to={"/"}>
+                  <Link className="nav-item nav-link" to={"/Likedsongs"}>
                     <img
                       className="navbar-icons"
                       src={LikedIcon}

@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { SET_PLAYING } from "../redux/actions";
+import {
+  getSingleArtistAction,
+  getSingleArtistTopAction,
+  SET_PLAYING,
+} from "../redux/actions";
 
 const BigCards = (props) => {
   const dispatch = useDispatch();
@@ -27,7 +31,13 @@ const BigCards = (props) => {
           {props.object.album.title}
         </Link>
         <br />
-        <Link to={`/artist/${props.object.artist.id}`}>
+        <Link
+          to={`/artist/${props.object.artist.id}`}
+          onClick={() => {
+            dispatch(getSingleArtistAction(props.object.artist.id));
+            dispatch(getSingleArtistTopAction(props.object.artist.id));
+          }}
+        >
           {props.object.artist.name}
         </Link>
       </p>
