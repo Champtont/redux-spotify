@@ -10,13 +10,19 @@ import {
 } from "../redux/actions";
 import SingleSong from "./SingleSong";
 
+/*add popmusic[0].data later... data does not exist until later on */
+
 const ArtistPage = () => {
   const params = useParams();
   const artistID = params.artistID;
   const dispatch = useDispatch();
-
   const artistInfo = useSelector((state) => state.music.singleArtist);
-  const topSongs = useSelector((state) => state.music.popularMusic[0].data);
+  const topSongs = useSelector((state) => state.music.popularMusic);
+
+  useEffect(() => {
+    dispatch(getSingleArtistAction(artistID));
+    dispatch(getSingleArtistTopAction(artistID));
+  }, []);
 
   console.log(params.artistID);
 
@@ -154,9 +160,8 @@ const ArtistPage = () => {
                   id="popular"
                   style={{ marginLeft: "25%" }}
                 >
-                  {topSongs.length === 0 && <div></div>}
                   {topSongs.length > 0 &&
-                    topSongs.map((song) => (
+                    topSongs[0].data.map((song) => (
                       <SingleSong key={song.id} song={song} />
                     ))}
                 </ListGroup>
