@@ -1,7 +1,7 @@
 import { Button, Col, ListGroup } from "react-bootstrap";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";
-import { REMOVE_FAV, SET_FAV } from "../redux/actions";
+import { REMOVE_FAV, SET_FAV, SET_PLAYING } from "../redux/actions";
 
 const SingleSong = (props) => {
   const favorites = useSelector((state) => state.music.favoriteMusic);
@@ -18,7 +18,13 @@ const SingleSong = (props) => {
           <img src={props.song.album.cover_small} alt="album cover" />
         </Col>
         <Col className="d-flex align-items-center">
-          <p>{props.song.title_short}</p>
+          <p
+            onClick={() => {
+              dispatch({ type: SET_PLAYING, payload: props.object });
+            }}
+          >
+            {props.song.title_short}
+          </p>
         </Col>
         <Col className="d-flex align-items-center">
           <p>{props.song.album.title}</p>
@@ -26,19 +32,27 @@ const SingleSong = (props) => {
         <Col className="d-flex align-items-center">
           <p>{fmtMSS(props.song.duration)}</p>
         </Col>
-        <Button
-          onClick={() => {
-            favorites.includes(props.song)
-              ? dispatch({ type: REMOVE_FAV, payload: props.song })
-              : dispatch({ type: SET_FAV, payload: props.song });
-          }}
-        >
-          {favorites.includes(props.song) ? (
+        {favorites.includes(props.song) === true ? (
+          <Button
+            onClick={() => {
+              favorites.includes(props.song)
+                ? dispatch({ type: REMOVE_FAV, payload: props.song })
+                : dispatch({ type: SET_FAV, payload: props.song });
+            }}
+          >
             <AiFillHeart />
-          ) : (
+          </Button>
+        ) : (
+          <Button
+            onClick={() => {
+              favorites.includes(props.song)
+                ? dispatch({ type: REMOVE_FAV, payload: props.song })
+                : dispatch({ type: SET_FAV, payload: props.song });
+            }}
+          >
             <AiOutlineHeart />
-          )}
-        </Button>
+          </Button>
+        )}
       </div>
     </ListGroup.Item>
   );
