@@ -18,6 +18,7 @@ const ArtistPage = () => {
   const dispatch = useDispatch();
   const artistInfo = useSelector((state) => state.music.singleArtist);
   const topSongs = useSelector((state) => state.music.popularMusic);
+  const favorites = useSelector((state) => state.music.favoriteMusic);
 
   useEffect(() => {
     dispatch(getSingleArtistAction(artistID));
@@ -162,7 +163,11 @@ const ArtistPage = () => {
                 >
                   {topSongs.length > 0 &&
                     topSongs[0].data.map((song) => (
-                      <SingleSong key={song.id} song={song} />
+                      <SingleSong
+                        key={song.id}
+                        song={song}
+                        favorites={favorites}
+                      />
                     ))}
                 </ListGroup>
                 <p>See More</p>

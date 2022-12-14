@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Button, Col, ListGroup } from "react-bootstrap";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";
@@ -5,6 +6,13 @@ import { REMOVE_FAV, SET_FAV, SET_PLAYING } from "../redux/actions";
 
 const SingleSong = (props) => {
   const favorites = useSelector((state) => state.music.favoriteMusic);
+  const [favorited, setFavorited] = useState(false);
+
+  useEffect(() => {
+    if (favorites.includes(props.song)) {
+      setFavorited(true);
+    }
+  }, [favorites]);
 
   const dispatch = useDispatch();
 
@@ -32,27 +40,22 @@ const SingleSong = (props) => {
         <Col className="d-flex align-items-center">
           <p>{fmtMSS(props.song.duration)}</p>
         </Col>
-        {favorites.includes(props.song) === true ? (
-          <Button
-            onClick={() => {
-              favorites.includes(props.song)
-                ? dispatch({ type: REMOVE_FAV, payload: props.song })
-                : dispatch({ type: SET_FAV, payload: props.song });
-            }}
-          >
+        <Button
+          onClick={() => {
+            favorites.includes(props.song)
+              ? dispatch({
+                  type: REMOVE_FAV,
+                  payload: props.song,
+                }).setFavorited(false)
+              : dispatch({ type: SET_FAV, payload: props.song });
+          }}
+        >
+          {favorites.length > 0 && favorited === true ? (
             <AiFillHeart />
-          </Button>
-        ) : (
-          <Button
-            onClick={() => {
-              favorites.includes(props.song)
-                ? dispatch({ type: REMOVE_FAV, payload: props.song })
-                : dispatch({ type: SET_FAV, payload: props.song });
-            }}
-          >
+          ) : (
             <AiOutlineHeart />
-          </Button>
-        )}
+          )}
+        </Button>
       </div>
     </ListGroup.Item>
   );
