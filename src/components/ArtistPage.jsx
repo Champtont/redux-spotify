@@ -40,12 +40,13 @@ const ArtistPage = () => {
               className="col-sm-12 p-0 fluid"
               style={{
                 marginLeft: "15.5%",
-                backgroundImage: `url(${artistInfo[0].picture_xl})`,
-                backgroundPositionY: "center",
-                height: "400px",
               }}
             >
-              <div id="mainPanel" className="jumbotron jumbotron-fluid p-0 m-0">
+              <div
+                id="mainPanel"
+                className="jumbotron jumbotron-fluid p-0 m-0"
+                style={{ backgroundImage: `url(${artistInfo[0].picture_xl})` }}
+              >
                 <div className="container ml-0 p-0">
                   {
                     <div id="artistsinfo" className="px-4">
@@ -155,12 +156,7 @@ const ArtistPage = () => {
             <div id="pageCategories" className="col-md-8 px-0">
               <div id="popularMusic">
                 <h3>Popular</h3>
-                <ListGroup
-                  as="ol"
-                  numbered
-                  id="popular"
-                  style={{ marginLeft: "25%" }}
-                >
+                <ListGroup as="ol" numbered id="popular">
                   {topSongs.length > 0 &&
                     topSongs[0].data.map((song) => (
                       <SingleSong

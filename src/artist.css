@@ -131,6 +131,10 @@ h1 {
   flex-grow: 1;
   color: white;
 }
+#playpause {
+  justify-content: space-between;
+  width: 20%;
+}
 #pause {
   background-color: #1db954;
   color: black;
@@ -168,6 +172,11 @@ h1 {
 
 h3 {
   color: white;
+  text-align: left;
+}
+#pageCategories {
+  width: 50%;
+  margin-left: auto;
 }
 .favoriteheart {
   visibility: hidden;
