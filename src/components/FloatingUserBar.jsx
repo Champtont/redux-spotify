@@ -5,7 +5,7 @@ const FloatingUserBar = () => {
     <div id="user-bar" className="">
       <div
         className="container d-flex justify-content-between"
-        style={{ width: "85%", marginRight: "0" }}
+        style={{ width: "84%", marginRight: "0" }}
       >
         <div id="arrows" className="d-flex justify-content-between">
           <a>

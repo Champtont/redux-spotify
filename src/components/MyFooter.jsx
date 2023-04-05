@@ -1,5 +1,6 @@
 import { Col, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import { useState } from "react";
 import { BsVolumeUpFill } from "react-icons/bs";
 import Nextbtn from "../playerbuttons/Next.png";
 import Pausebtn from "../playerbuttons/Pause.png";
@@ -12,6 +13,21 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 const MyFooter = () => {
   const currentSelection = useSelector((state) => state.music.setPlaying);
   const favorites = useSelector((state) => state.music.favoriteMusic);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const togglePlayPause = () => {
+    const miniPlayBtn = document.getElementById("miniplay");
+    const miniPauseBtn = document.getElementById("minipause");
+    if (isPlaying === false) {
+      setIsPlaying(true);
+      miniPauseBtn.classList.remove("hidden");
+      miniPlayBtn.classList.add("hidden");
+    } else if (isPlaying === true) {
+      setIsPlaying(false);
+      miniPauseBtn.classList.add("hidden");
+      miniPlayBtn.classList.remove("hidden");
+    }
+  };
 
   return (
     <footer
@@ -20,8 +36,11 @@ const MyFooter = () => {
       style={{ zIndex: "3" }}
     >
       <Row>
-        <Col lg={3}>
-          <div className="playerArtistInfo d-flex" style={{ height: "50px" }}>
+        <Col lg={4}>
+          <div
+            className="playerArtistInfo d-flex justify-content-between ps-2"
+            style={{ height: "50px" }}
+          >
             {currentSelection.length === 0 ? (
               <>
                 <img
@@ -81,26 +100,37 @@ const MyFooter = () => {
             <audio id="audio"></audio>
           </div>
         </Col>
-        <Col lg={6}>
+        <Col lg={5} className="d-flex align-items-center">
           <div className="playerControls w-50 d-flex justify-content-between">
-            <a href="#">
+            <div>
               <img src={Shufflebtn} alt="shuffle" />
-            </a>
-            <a href="#">
+            </div>
+            <div>
               <img src={Prevbtn} alt="previous" />
-            </a>
-            <a id="miniplay">
+            </div>
+            <div
+              id="miniplay"
+              onClick={(e) => {
+                togglePlayPause();
+              }}
+            >
               <img src={Playbtn} alt="play" />
-            </a>
-            <a id="minipause">
-              <img src={Pausebtn} alt="" />
-            </a>
-            <a href="#">
+            </div>
+            <div
+              id="minipause"
+              className="hidden"
+              onClick={(e) => {
+                togglePlayPause();
+              }}
+            >
+              <img src={Pausebtn} alt="pause" />
+            </div>
+            <div>
               <img src={Nextbtn} alt="next" />
-            </a>
-            <a href="#">
+            </div>
+            <div>
               <img src={Repeatbtn} alt="repeat" />
-            </a>
+            </div>
           </div>
         </Col>
         <Col lg={3}>

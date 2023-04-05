@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Button, Col, ListGroup } from "react-bootstrap";
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";
 import { REMOVE_FAV, SET_FAV, SET_PLAYING } from "../redux/actions";
 import MyLikeButton from "./MyLikeButton";
@@ -26,7 +25,7 @@ const SingleSong = (props) => {
             {props.song.title_short}
           </p>
         </Col>
-        <Col className="d-flex align-items-center">
+        <Col className="d-flex align-items-center justify-content-center">
           <p>{fmtMSS(props.song.duration)}</p>
         </Col>
         <MyLikeButton song={props.song} />

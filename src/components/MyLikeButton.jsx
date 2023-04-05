@@ -32,9 +32,9 @@ const MyLikeButton = (props) => {
       }}
     >
       {favorites.length > 0 && favorited === true ? (
-        <AiFillHeart />
+        <AiFillHeart size={22} />
       ) : (
-        <AiOutlineHeart />
+        <AiOutlineHeart className="favoriteheart" size={22} />
       )}
     </Button>
   );

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ListGroup, Row } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -19,6 +19,21 @@ const ArtistPage = () => {
   const artistInfo = useSelector((state) => state.music.singleArtist);
   const topSongs = useSelector((state) => state.music.popularMusic);
   const favorites = useSelector((state) => state.music.favoriteMusic);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const togglePlayPause = () => {
+    const playBtn = document.getElementById("play");
+    const pauseBtn = document.getElementById("pause");
+    if (isPlaying === false) {
+      setIsPlaying(true);
+      pauseBtn.classList.remove("hidden");
+      playBtn.classList.add("hidden");
+    } else if (isPlaying === true) {
+      setIsPlaying(false);
+      pauseBtn.classList.add("hidden");
+      playBtn.classList.remove("hidden");
+    }
+  };
 
   useEffect(() => {
     dispatch(getSingleArtistAction(artistID));
@@ -47,7 +62,7 @@ const ArtistPage = () => {
                 className="jumbotron jumbotron-fluid p-0 m-0"
                 style={{ backgroundImage: `url(${artistInfo[0].picture_xl})` }}
               >
-                <div className="container ml-0 p-0">
+                <div className="container ms-0 p-0">
                   {
                     <div id="artistsinfo" className="px-4">
                       <div
@@ -108,7 +123,10 @@ const ArtistPage = () => {
                 width: "50px",
                 height: "50px",
                 fontWeight: "900",
-                fontSize: "16pt",
+                fontSize: "20pt",
+              }}
+              onClick={() => {
+                togglePlayPause();
               }}
             >
               ||
@@ -117,6 +135,9 @@ const ArtistPage = () => {
               id="play"
               className="rounded-circle mr-3"
               style={{ width: "50px", height: "50px", position: "relative" }}
+              onClick={() => {
+                togglePlayPause();
+              }}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -155,7 +176,7 @@ const ArtistPage = () => {
           <div className="row px-4 mt-4">
             <div id="pageCategories" className="col-md-8 px-0">
               <div id="popularMusic">
-                <h3>Popular</h3>
+                <h4>Popular</h4>
                 <ListGroup as="ol" numbered id="popular">
                   {topSongs.length > 0 &&
                     topSongs[0].data.map((song) => (
@@ -170,11 +191,11 @@ const ArtistPage = () => {
               </div>
             </div>
             <div id="smrightpanel" className="col-md-4">
-              <h3>Artist Pick</h3>
+              <h4>Artist Pick</h4>
             </div>
           </div>
-          <div className="container">
-            <h3>Popular Releases</h3>
+          <div id="popularBox">
+            <h4>Popular Releases</h4>
             <div id="disco" className="row row-cols-lg-5"></div>
           </div>
         </div>

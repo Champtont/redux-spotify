@@ -37,6 +37,9 @@ body {
   color: rgb(145, 145, 145) !important;
   transition: 0.3s;
 }
+.navbar-nav {
+  margin-top: 2em;
+}
 
 .navbar.fixed-left .navbar-collapse .navbar-nav a:hover {
   color: white !important;
@@ -50,7 +53,6 @@ body {
 
 ul {
   list-style-type: none;
-  padding-left: 3px;
 }
 
 .nav-btn {
@@ -130,18 +132,16 @@ ul {
 }
 
 .playerControls {
-  max-width: 250px;
-  margin: 0 auto;
+  margin-left: 5em;
 }
-
-.playerControls a img {
-  width: 14px;
-  max-height: 16px;
-  margin-right: 0.5rem;
+.playerControls div img {
+  width: 20px;
+  max-height: 20px;
+  margin: 0;
   filter: brightness(60%);
 }
 
-.playerControls a:hover {
+.playerControls div:hover {
   filter: brightness(80%);
   color: #282828 !important;
 }
@@ -587,4 +587,19 @@ artist-small-player {
 
 .ul-font {
   font-size: 18px;
+  text-align: left;
+  padding-right: 0.5em;
+}
+.ul-font li > a {
+  display: flex;
+  font-weight: 400;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: 0.5em;
+}
+.ul-font li:last-of-type {
+  text-align: center;
+}
+.hidden {
+  display: none;
 }
